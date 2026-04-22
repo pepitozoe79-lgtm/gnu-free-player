@@ -1,10 +1,32 @@
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?q=80&w=2662&auto=format&fit=crop" alt="Curator Banner" width="100%" style="border-radius:15px; margin-bottom: 20px;">
+  <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2659&auto=format&fit=crop" alt="Curator Banner" width="100%" style="border-radius:15px; margin-bottom: 20px;">
   
-  # 🎬 MyMediaServer v2.0.0 — Enterprise Edition
-  **El Servidor Multimedia Autocontenido Definitivo para tu Red Local y la Nube.**
+  # 📽️ Curator Media Server
 
-  [![Version](https://img.shields.io/badge/Versi%C3%B3n-2.0.0-blue.svg?style=for-the-badge)](https://github.com/pepitozoe79-lgtm/MyMediaServer-v2.0.0)
+  Un media server moderno, responsivo y ultra veloz inspirado en las grandes plataformas de streaming. Anteriormente conocido como "GNU Free Player", ahora renace en NodeJS con una estética premium.
+
+  ## 🚀 Instalación Automática (Estilo CasaOS)
+
+  Instala, configura y levanta el servidor completo con un solo comando en tu terminal de Ubuntu/Debian:
+
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/gnu-free-player/main/install.sh | sudo bash
+  ```
+
+  Una vez que termine, te dirá tu IP, puerto y clave maestra en pantalla. ¡Así de fácil!
+
+  ## 🗑️ Desinstalación Rápida
+
+  Si alguna vez decides remover todo el ecosistema (sin borrar tus videos almacenados), basta con correr:
+
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/gnu-free-player/main/uninstall.sh | sudo bash
+  ```
+
+  ---
+
+  ## 📂 Arquitectura del Proyecto-v2.0.0
+
   [![Security](https://img.shields.io/badge/Security-JWT_|_Path_Traversal_Protected-green.svg?style=for-the-badge)]()
   [![Docker Ready](https://img.shields.io/badge/Docker-Ready-2496ED.svg?style=for-the-badge&logo=docker)]()
   [![Node.js](https://img.shields.io/badge/Node.js-v20_LTS-339933.svg?style=for-the-badge&logo=nodedotjs)]()
