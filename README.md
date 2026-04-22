@@ -10,7 +10,7 @@
   Instala, configura y levanta el servidor completo con un solo comando en tu terminal de Ubuntu/Debian:
 
   ```bash
-  curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/gnu-free-player/main/install.sh | sudo bash
+  curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/MyMediaServer/main/install.sh | sudo bash
   ```
 
   Una vez que termine, te dirá tu IP, puerto y clave maestra en pantalla. ¡Así de fácil!
@@ -20,7 +20,7 @@
   Si alguna vez decides remover todo el ecosistema (sin borrar tus videos almacenados), basta con correr:
 
   ```bash
-  curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/gnu-free-player/main/uninstall.sh | sudo bash
+  curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/MyMediaServer/main/uninstall.sh | sudo bash
   ```
 
   ---
@@ -71,8 +71,8 @@ Si eres desarrollador o quieres correrlo en Windows/MacOS en lugar de un servido
 
 1. Clona el proyecto
 ```powershell
-git clone https://github.com/pepitozoe79-lgtm/gnu-free-player.git
-cd gnu-free-player
+git clone https://github.com/pepitozoe79-lgtm/MyMediaServer.git
+cd MyMediaServer
 ```
 2. Instala dependencias y corre el servidor local:
 ```powershell
@@ -98,10 +98,10 @@ El servidor generará automáticamente su estructura local de carpetas en cuanto
 
 ---
 
-## 💖 Agradecimientos y Mención Honorífica
+## 🦆 Agradecimientos y Mención Honorífica
 
 Quiero hacer una mención honorífica y un agradecimiento muy especial a mi maestro, **[@elpato001](https://github.com/elpato001)**. Gracias a sus conocimientos transmitidos, su dedicación y sus enseñanzas a lo largo de este camino, la evolución de este proyecto y mis habilidades como desarrollador han llegado a un nuevo y extraordinario nivel. ¡Gracias eternas, maestro!
 
-Este proyecto ha sido rediseñado con sumo cuidado, aplicando las mejores metodologías estándar en la modernización de Node.js en honor a las horas dedicadas a este aprendizaje.
+Este proyecto ha sido rediseñado con sumo cuidado, aplicando las mejores metodologías estándar en la modernización de Node.js en honor a las horas dedicadas a este aprendizaje. https://github.com/pepitozoe79-lgtm/MyMediaServer
 
 **Hecho con ❤️ para la comunidad Open Source y Home Servers.**
