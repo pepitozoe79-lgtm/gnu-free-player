@@ -34,69 +34,47 @@
 
 <br>
 
-Bienvenido a **MyMediaServer v2.0.0**, la evolución premium de tu cine en casa personal. Construido sobre Node.js, este proyecto no es solo un servidor de archivos; es una plataforma de streaming VOD (Video On Demand) completa con una de las interfaces más hermosas, seguras y robustas de la comunidad Open Source. Olvídate de configuraciones pesadas como Plex o Jellyfin. Ligero, portátil y brutalmente seguro.
+Bienvenido a **Curator Media Server** (la reencarnación NodeJS de *GNU Free Player*), la evolución premium de tu cine en casa personal. Construido sobre Node.js, este proyecto no es solo un servidor de archivos; es una plataforma de streaming VOD (Video On Demand) completa con una de las interfaces más hermosas, seguras y robustas de la comunidad Open Source.
 
 ---
 
-## 🌟 ¿Qué hace a la v2.0.0 tan especial?
+## ✨ Novedades Recientes (Lo nuevo en esta versión)
+
+Hemos migrado del antiguo núcleo C# a una arquitectura **Node.js ultra-rápida y ligera**, resolviendo múltiples errores reportados por la comunidad:
+1. **🛠️ Instalador Automático Estilo CasaOS:** Ya no necesitas instalar .NET ni lidiar con dependencias complejas. Un solo comando lo instala todo.
+2. **🔑 Cambio de Contraseñas Activo:** A petición popular, hemos añadido el botón de *Cambiar Contraseña* directamente en el panel de usuario. Tu cuenta `admin` puede modificar su clave con 2 clics para mantener la seguridad.
+3. **📁 Subida de Archivos Masivos Optimizada:** Se corrigieron los errores de subida (Upload). El backend ahora admite *streaming de subidas de hasta 10GB* utilizando el protocolo `multipart/form-data` e integrando Headers `Authorization: Bearer` con JWT sin cortes.
+4. **🔌 Desinstalador Universal:** Si te equivocaste de servidor o quieres limpiar todo, añadimos un script de `uninstall.sh` súper seguro que limpia el daemon sin borrar tus películas.
+
+---
+
+## 🌟 ¿Qué lo hace tan especial?
 
 ### 🛡️ Seguridad de Grado Empresarial (Enterprise Security)
-* **Autenticación JWT Estricta:** Todas las rutas, incluyendo el streaming de video nativo, están protegidas con JSON Web Tokens de sesión.
-* **Tolerancia a Zero-Days y Path Traversal:** Algoritmos avanzados aíslan completamente la carpeta `/media`, bloqueando cualquier intento de leer archivos del sistema (como `/etc/passwd`).
-* **Protección Anti-Bruteforce:** Middleware de escalado progresivo y Rate Limiting inteligente (bloqueo tras 5 intentos cada 15 min).
-* **Bloqueo de Concurrencia (File Locking):** Previene la corrupción de bases de datos JSON (como `users.json`) cuando múltiples usuarios o administradores escriben al mismo tiempo.
+* **Autenticación JWT:** Olvídate del viejo sistema de Cookies poco seguras. Todas las rutas usan JSON Web Tokens.
+* **Tolerancia a Path Traversal:** Protege completamente tu servidor impidiendo que usuarios escapen de la carpeta `/media`.
+* **File Locking:** Previene la corrupción de tu lista de `users.json` al tratar de cambiar contraseñas simultáneamente.
 
 ### 🎨 Experiencia "Curator" Premium (Glassmorphism)
-Interfaz rediseñada desde cero inspirada en Apple TV+ y el nuevo diseño de Netflix.
-* Diseño ultra inmersivo con estética oscura "Glassmorphism" y fondos difuminados reactivos.
-* Motor dinámico de portadas automáticas y sección funcional de **Continue Watching**.
-* Reproductor de video de ultra-alta eficiencia que guarda el minuto y segundo exacto en la caché local (`localStorage`) de manera silenciosa.
+Interfaz rediseñada desde cero inspirada en las principales plataformas de VOD.
+* Estética oscura "Glassmorphism" con fondos reactivos que toman el color de tus pósters.
+* Reproductor de video que guarda automáticamente progreso en **Continue Watching**.
 
 ### 🛰️ Live IPTV Integrado
-Soporte absoluto para listas M3U / M3U8. Renderización de la grilla de canales extrayendo etiquetas y logos dinámicos en tiempo real para emular experiencias de TV nativas.
+Soporte absoluto para listas M3U / M3U8. Pega tu link de IPTV y el sistema extraerá automáticamente el logo del canal y su título para mostrarlo gráficamente.
 
 ---
 
-## 🚀 Instalación en 1-Clic para la Nube (Linux VPS / CasaOS)
+## 💻 Entorno de Desarrollo Manual
 
-¿Tienes un servidor Ubuntu/Debian? ¿Una VPS en la nube? Puedes desplegar el servidor en menos de 20 segundos. Este script actualizará el servidor, instalará Node.js, descargará y configurará MyMediaServer como un servicio perpetuo mediante `systemd`.
+Si eres desarrollador o quieres correrlo en Windows/MacOS en lugar de un servidor Ubuntu:
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/pepitozoe79-lgtm/MyMediaServer-v2.0.0/main/install.sh | sudo bash
-```
-
-Una vez instalado, ingresa a `http://TU-IP-SERVIDOR:3000` con:
-* **Usuario:** `admin`
-* **Contraseña:** `admin123` *(Se recomienda encarecidamente cambiarla tras el primer inicio)*
-
----
-
-## 🐳 Despliegue con Docker (Modo Producción HTTPS)
-
-Si prefieres usar contenedores de Docker, el repositorio ya cuenta con `Dockerfile` y `docker-compose.yml`. El stack incluye un contenedor de aplicación NodeJS puro, y un servidor Nginx diseñado como Reverse Proxy.
-
-```bash
-# Clonar el proyecto
-git clone https://github.com/pepitozoe79-lgtm/MyMediaServer-v2.0.0.git
-cd MyMediaServer-v2.0.0
-
-# Levantar con Docker Compose (-d para background)
-docker-compose up -d --build
-```
-
-El servidor quedará disponible y mapeado a través de Nginx en los puertos 80 y 443 (asegúrate de colocar tus certificados TLS válidos en la carpeta `certs/`).
-
----
-
-## 💻 Entorno Local (Windows / MacOS / Raspberry Pi)
-
-1. Asegúrate de tener instalado [Node.js](https://nodejs.org/).
-2. Abre la terminal, navega a tu carpeta preferida y clona el proyecto:
+1. Clona el proyecto
 ```powershell
-git clone https://github.com/pepitozoe79-lgtm/MyMediaServer-v2.0.0.git
-cd MyMediaServer-v2.0.0
+git clone https://github.com/pepitozoe79-lgtm/gnu-free-player.git
+cd gnu-free-player
 ```
-3. Instala los paquetes dependencias e inicializa el servidor:
+2. Instala dependencias y corre el servidor local:
 ```powershell
 npm install
 npm start
@@ -105,45 +83,23 @@ npm start
 ---
 
 ## 📂 Arquitectura Interna y Organización
-Siente el poder del auto-gestor. Una vez encendido por primera vez, el servidor generará inteligentemente su estructura local de carpetas. Arrastra y suelta tus archivos MP4, MKV o AVI.
+El servidor generará automáticamente su estructura local de carpetas en cuanto inicie:
 
 ```text
-MyMediaServer/
-├── media/           🎬 (Las películas y subcarpetas van aquí)
-│   ├── Peliculas/ 
-│   ├── Series/    
-│   └── Musica/      
+/opt/mymediaserver/
+├── media/           🎬 (Tus películas y subcarpetas van aquí)
 ├── public/          🎨 (Frontend Vanilla JS/CSS interactivo)
-├── server.js        🧠 (La API protegida por JWT)
+├── server.js        🧠 (Core protegido por JWT)
 ├── users.json       🔐 (Base de datos Autogenerada de cuentas)
-└── iptv.json        📺 (Configuración de canales en memoria)
+└── iptv.json        📺 (Configuración de IPTV guardada)
 ```
-💡 **Tip de Portadas:** ¿Quieres darle elegancia a tu biblioteca? Coloca cualquier imagen JPG con el nombre `poster.jpg` dentro de la subcarpeta local de una película y el servidor la usará inteligentemente en el Panel Central en lugar del SVG generalizado.
+
+💡 **Tip de Portadas:** ¿Quieres darle elegancia a tu biblioteca? Coloca cualquier imagen JPG con el nombre `poster.jpg` dentro de la subcarpeta local de una película y el servidor la usará inteligentemente en lugar del póster genérico.
 
 ---
 
-## 🗺️ Roadmap y Mirando al Futuro
+## 💖 Agradecimientos y Uso
 
-El viaje hacia el código limpio nunca termina. Nos encontramos trabajando activamente en las próximas fases del ecosistema:
+Este proyecto ha sido rediseñado con sumo cuidado, dedicando horas a aplicar las convenciones de robustez, ciberseguridad, y las metodologías estándar en la modernización de Node.js, por petición y apoyo de la comunidad en HomeLabs.
 
-### 🔜 v2.1.0 
-- [ ] 🔔  Web Push notifications para informar de nuevos contenidos.
-- [ ] 📊  Dashboard de estadísticas avanzadas de streaming.
-- [ ] 🌍  Adaptación i18n completa para multi-lenguaje.
-
-### 🚀 v3.0.0 
-- [ ] ⚙️  Transcodificación de video automática en tiempo real utilizando FFmpeg.
-- [ ] 🎬  Sincronización via API TMDB (The Movie Database) para metadata automática.
-- [ ] 📱  Arquitectura PWA (Progressive Web App) y capacidades offline mejoradas.
-- [ ] 🧩  Sistema de inyección de módulos (Ecosystem Extensions).
-
----
-
-## 💖 Agradecimientos y Comunidad
-
-¿Encontraste un problema? ¡Abre un [Issue](https://github.com/pepitozoe79-lgtm/MyMediaServer-v2.0.0/issues)!
-¿Hiciste un parche genial? ¡Mandanos un Pull Request!
-
-Este proyecto v2 ha sido rediseñado con sumo cuidado, dedicando horas a aplicar las convenciones de robustez, ciberseguridad, y las metodologías estándar en la modernización de Javascript puro, todo esto por petición comunitaria en Home Labs. 
-
-**Hecho con ❤️ para la increíble comunidad de Home Servers Open Source.**
+**Hecho con ❤️ para la comunidad Open Source y Home Servers.**
