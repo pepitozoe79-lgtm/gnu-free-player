@@ -98,8 +98,10 @@ El servidor generará automáticamente su estructura local de carpetas en cuanto
 
 ---
 
-## 💖 Agradecimientos y Uso
+## 💖 Agradecimientos y Mención Honorífica
 
-Este proyecto ha sido rediseñado con sumo cuidado, dedicando horas a aplicar las convenciones de robustez, ciberseguridad, y las metodologías estándar en la modernización de Node.js, por petición y apoyo de la comunidad en HomeLabs.
+Quiero hacer una mención honorífica y un agradecimiento muy especial a mi maestro, **[@elpato001](https://github.com/elpato001)**. Gracias a sus conocimientos transmitidos, su dedicación y sus enseñanzas a lo largo de este camino, la evolución de este proyecto y mis habilidades como desarrollador han llegado a un nuevo y extraordinario nivel. ¡Gracias eternas, maestro!
+
+Este proyecto ha sido rediseñado con sumo cuidado, aplicando las mejores metodologías estándar en la modernización de Node.js en honor a las horas dedicadas a este aprendizaje.
 
 **Hecho con ❤️ para la comunidad Open Source y Home Servers.**
