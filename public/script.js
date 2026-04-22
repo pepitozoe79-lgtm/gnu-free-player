@@ -392,6 +392,25 @@ async function deleteFile(path) {
 }
 
 // --- ADMIN / USUARIOS ---
+async function changePassword() {
+    const newPwd = prompt("Introduce tu nueva contraseña (mínimo 4 caracteres):");
+    if (!newPwd) return;
+    
+    try {
+        const res = await apiFetch('/api/users/change-password', {
+            method: 'POST',
+            body: JSON.stringify({ newPassword: newPwd }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (res.error) return alert("Error: " + res.error);
+        
+        alert("Contraseña actualizada correctamente. Por favor, inicia sesión nuevamente.");
+        logout();
+    } catch (e) {
+        alert("Error de conexión al cambiar la contraseña.");
+    }
+}
+
 async function loadUsersList() {
     const users = await apiFetch('/api/users');
     const list = document.getElementById('usersList');

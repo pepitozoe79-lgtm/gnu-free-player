@@ -374,6 +374,25 @@ app.post('/api/admin/reboot', authenticateToken, (req, res) => {
     });
 });
 
+app.post('/api/users/change-password', authenticateToken, async (req, res) => {
+    const { newPassword } = req.body;
+    if (!newPassword || newPassword.length < 4) return res.status(400).json({ error: 'La contraseña debe tener al menos 4 caracteres' });
+    
+    try {
+        await withFileLock(USERS_FILE, async () => {
+            const users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+            const uIndex = users.findIndex(u => u.id === req.user.id);
+            if (uIndex === -1) throw new Error('Usuario no encontrado');
+            
+            users[uIndex].password = bcrypt.hashSync(newPassword, 10);
+            fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+        });
+        res.json({ success: true });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 app.post('/api/admin/poweroff', authenticateToken, (req, res) => {
     if (req.user.role !== 'admin') return res.status(403).json({ error: 'Admin only' });
     exec('sudo poweroff', (error) => {
